@@ -215,7 +215,7 @@ export default function Portfolio() {
             I’m a{" "}
             <span className="font-semibold text-indigo-500">
               <Typewriter
-                words={["Software Developer", "MERN Stack Dev", "Flutter App Builder", "MCA Student"]}
+                words={["Software Developer", "MERN Stack Dev", "Application Dev"]}
                 loop
                 cursor
                 typeSpeed={70}
