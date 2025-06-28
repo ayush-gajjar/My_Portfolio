@@ -6,9 +6,9 @@ import {
   SunMedium,
   Menu,
   X,
-   Github,
+  Github,
   Linkedin,
-  Instagram
+  Instagram,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ import { Analytics } from "@vercel/analytics/next";
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -208,14 +208,24 @@ export default function Portfolio() {
       <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24">
         <motion.div initial="hidden" animate="show" variants={sectionFade}>
           <div className="mb-6">
-            <Lottie options={{ loop: true, autoplay: true, animationData }} height={300} width={300} />
+            <Lottie
+              options={{ loop: true, autoplay: true, animationData }}
+              height={300}
+              width={300}
+            />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Hey, I’m Ayush Gajjar 🚀</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Hey, I’m Ayush Gajjar 🚀
+          </h1>
           <p className="text-xl mb-6">
             I’m a{" "}
             <span className="font-semibold text-indigo-500">
               <Typewriter
-                words={["Software Developer", "MERN Stack Dev", "Application Dev"]}
+                words={[
+                  "Software Developer",
+                  "MERN Stack Dev",
+                  "Application Dev",
+                ]}
                 loop
                 cursor
                 typeSpeed={70}
@@ -268,17 +278,21 @@ export default function Portfolio() {
         <div className={`${glassCard} p-6 md:p-10`}>
           <h2 className="text-3xl font-bold mb-4">About Me</h2>
           <p className="mb-4 text-gray-500 dark:text-gray-400 text-sm md:text-base">
-            I'm <strong>Ayush Gajjar</strong>, a full-stack developer passionate about the{" "}
-            <span className="text-indigo-500 font-semibold">MERN stack</span> and{" "}
-            <span className="text-indigo-500 font-semibold">Flutter</span>. I build scalable and intuitive software,
-            currently pursuing MCA at LJ University.
+            I'm <strong>Ayush Gajjar</strong>, a full-stack developer passionate
+            about the{" "}
+            <span className="text-indigo-500 font-semibold">MERN stack</span>{" "}
+            and <span className="text-indigo-500 font-semibold">Flutter</span>.
+            I build scalable and intuitive software, currently pursuing MCA at
+            LJ University.
           </p>
-          <p className="text-sm italic text-gray-900 dark:text-gray-400">"Code with purpose. Build with passion."</p>
+          <p className="text-sm italic text-gray-900 dark:text-gray-400">
+            "Code with purpose. Build with passion."
+          </p>
         </div>
       </motion.section>
 
       {/* Skills */}
-    {/* SKILLS */}
+      {/* SKILLS */}
       <motion.section
         id="skills"
         className="py-20 px-6 max-w-6xl mx-auto"
@@ -312,7 +326,7 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-       {/* PROJECTS */}
+      {/* PROJECTS */}
       <motion.section
         id="projects"
         className="py-20 px-6 max-w-6xl mx-auto"
@@ -376,8 +390,6 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-
-
       {/* Testimonials */}
       <motion.section
         id="testimonials"
@@ -398,25 +410,53 @@ export default function Portfolio() {
           ))}
         </div>
       </motion.section>
-
-      {/* Contact */}
-      {/* Contact */}
-      <motion.section
-        id="contact"
-        className="py-20 px-6 max-w-2xl mx-auto"
-        initial="hidden"
-        whileInView="show"
-        variants={sectionFade}
-        viewport={{ once: true }}
+{/* Contact */}
+<motion.section
+  id="contact"
+  className="py-20 px-6 max-w-2xl mx-auto"
+  initial="hidden"
+  whileInView="show"
+  variants={sectionFade}
+  viewport={{ once: true }}
+>
+  <div className="flex justify-center">
+    <div className={`w-full md:w-3/4 lg:w-2/3 ${glassCard}`}>
+      <h2 className="text-3xl font-bold text-center mb-8">Let's Connect</h2>
+      <form
+        className="space-y-4"
+        method="POST"
+        action="https://formspree.io/f/mjkrjpnj"
       >
-        <h2 className="text-3xl font-bold text-center mb-8">Let's Connect</h2>
-        <form className="space-y-4">
-          <Input placeholder="Your Name" />
-          <Input placeholder="Your Email" />
-          <Textarea placeholder="Your Message" />
-          <Button className="bg-indigo-500 text-white w-full hover:bg-indigo-600">Send Message</Button>
-        </form>
-      </motion.section>
+        <Input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          className="dark:text-black"
+        />
+        <Input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+          className="dark:text-black"
+        />
+        <Textarea
+          name="message"
+          placeholder="Your Message"
+          required
+          className="dark:text-black"
+        />
+        <Button
+          type="submit"
+          className="bg-indigo-500 text-white w-full hover:bg-indigo-600"
+        >
+          Send Message
+        </Button>
+      </form>
+    </div>
+  </div>
+</motion.section>
 
 
       {/* FOOTER */}
@@ -437,7 +477,6 @@ export default function Portfolio() {
           {new Date().getFullYear()}
         </p>
       </footer>
-
     </main>
   );
 }
