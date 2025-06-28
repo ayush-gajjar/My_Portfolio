@@ -75,12 +75,6 @@ export default function Portfolio() {
       desc: "A Music Player Clone.",
       link: "https://github.com/ayush101x/Spotify--Clone--Project-2",
     },
-    {
-      title: "UltraEdits Clone",
-      tech: "HTML | CSS ",
-      desc: "UltraEdit is a text editor and hex editor for Microsoft.",
-      link: "https://github.com/ayush101x/website_learning/tree/main/Project-ULTRAEDIT--WEBSITE--CLONE",
-    },
   ];
 
   const skills = [
