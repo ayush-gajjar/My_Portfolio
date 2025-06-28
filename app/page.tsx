@@ -169,7 +169,7 @@ export default function Portfolio() {
               onClick={() => setSidebarOpen(false)}
             />
             <motion.aside
-              className={`fixed top-0 right-0 h-full w-64 z-50 p-6 flex flex-col shadow-xl ${
+              className={`fixed top-0 right-0 h-full w-54  z-50 p-6 flex flex-col shadow-xl ${
                 darkMode ? "bg-black text-white" : "bg-white text-black"
               }`}
               initial={{ x: "100%" }}
