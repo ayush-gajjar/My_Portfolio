@@ -352,6 +352,7 @@ export default function Portfolio() {
       </motion.section>
 
       {/* Contact */}
+      {/* Contact */}
       <motion.section
         id="contact"
         className="py-20 px-6 max-w-2xl mx-auto"
