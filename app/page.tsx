@@ -6,7 +6,11 @@ import {
   SunMedium,
   Menu,
   X,
+   Github,
+  Linkedin,
+  Instagram
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,10 +19,12 @@ import { Typewriter } from "react-simple-typewriter";
 import Lottie from "react-lottie";
 import animationData from "@/public/lotties/coding.json";
 import { FaGithub, FaLinkedin, FaInstagram, FaQuoteLeft } from "react-icons/fa";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -306,7 +312,7 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      {/* Projects */}
+       {/* PROJECTS */}
       <motion.section
         id="projects"
         className="py-20 px-6 max-w-6xl mx-auto"
@@ -316,19 +322,61 @@ export default function Portfolio() {
         viewport={{ once: true }}
       >
         <h2 className="text-3xl font-bold text-center mb-10">Projects</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((proj, idx) => (
-            <div key={idx} className={glassCard}>
-              <h3 className="text-lg font-semibold">{proj.title}</h3>
-              <p className="text-sm text-indigo-500">{proj.tech}</p>
-              <p className="my-2 text-gray-600 dark:text-gray-300 text-sm">{proj.desc}</p>
-              <a href={proj.link} target="_blank" className="text-indigo-500 text-sm font-medium underline">
-                View Code
-              </a>
-            </div>
-          ))}
+        <div className="flex justify-center gap-4 mb-6 flex-wrap">
+          {["All", "React", "Flutter", "HTML | CSS | JS", "DotNot", "PHP"].map(
+            (tech) => (
+              <motion.div
+                key={tech}
+                onClick={() => setFilter(tech)}
+                className={`px-5 py-2 rounded-full border text-sm cursor-pointer transition-all transform hover:scale-110 ${
+                  filter === tech
+                    ? darkMode
+                      ? "bg-white/20 text-white border-white/10"
+                      : "bg-gray-300 text-black border-gray-400"
+                    : darkMode
+                    ? "bg-white/10 text-white border-white/10 hover:bg-white/20"
+                    : "bg-gray-200 text-black border-gray-300 hover:bg-gray-300"
+                }`}
+                style={{ userSelect: "none" }}
+              >
+                {tech}
+              </motion.div>
+            )
+          )}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects
+            .filter((p) => filter === "All" || p.tech.includes(filter))
+            .map((project, idx) => (
+              <motion.div
+                key={idx}
+                className={glassCard}
+                whileHover={{ scale: 1.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.011 }}
+              >
+                <h3 className="text-xl font-semibold text-indigo-600">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {project.tech}
+                </p>
+                <p className="mb-2">{project.desc}</p>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  className="text-indigo-500 hover:underline text-sm"
+                >
+                  View on GitHub
+                </a>
+              </motion.div>
+            ))}
         </div>
       </motion.section>
+
+
 
       {/* Testimonials */}
       <motion.section
@@ -369,6 +417,27 @@ export default function Portfolio() {
           <Button className="bg-indigo-500 text-white w-full hover:bg-indigo-600">Send Message</Button>
         </form>
       </motion.section>
+
+
+      {/* FOOTER */}
+      <footer className="py-10 px-4 mt-20 text-center max-w-4xl mx-auto">
+        <div className="flex justify-center space-x-6 mb-4">
+          <a href="https://github.com/ayushgajjar123" target="_blank">
+            <Github />
+          </a>
+          <a href="https://www.linkedin.com/in/ayushgajjar123" target="_blank">
+            <Linkedin />
+          </a>
+          <a href="https://instagram.com/ayushgajjar.exe" target="_blank">
+            <Instagram />
+          </a>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          💻 Software Developer | 🚀 MERN Stack & Flutter Dev · Ayush Gajjar · ©{" "}
+          {new Date().getFullYear()}
+        </p>
+      </footer>
+
     </main>
   );
 }
