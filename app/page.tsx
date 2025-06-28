@@ -462,10 +462,10 @@ export default function Portfolio() {
       {/* FOOTER */}
       <footer className="py-10 px-4 mt-20 text-center max-w-4xl mx-auto">
         <div className="flex justify-center space-x-6 mb-4">
-          <a href="https://github.com/ayushgajjar123" target="_blank">
+          <a href="https://github.com/ayush101x" target="_blank">
             <Github />
           </a>
-          <a href="https://www.linkedin.com/in/ayushgajjar123" target="_blank">
+          <a href="www.linkedin.com/in/ayushgajjar123" target="_blank">
             <Linkedin />
           </a>
           <a href="https://instagram.com/ayushgajjar.exe" target="_blank">
