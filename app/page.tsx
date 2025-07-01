@@ -31,7 +31,14 @@ import { Pagination } from "swiper/modules";
 // Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
+import Testimonials from "@/components/Testimonials";
+import Footer from "@/components/Footer";
 export default function Portfolio() {
   // State management
   const [darkMode, setDarkMode] = useState(false); // Toggle dark/light mode
@@ -56,7 +63,6 @@ export default function Portfolio() {
   useEffect(() => {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
-
   // Prevent scrolling when sidebar is open
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? "hidden" : "auto";
@@ -74,590 +80,43 @@ export default function Portfolio() {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
-
-  // Projects data array
-  const projects = [
-    {
-      id: "StayMate PG App",
-      tech: "Flutter",
-      desc: "Manages PG rooms and rent, built in Flutter & Firebase.",
-      link: "https://github.com/user/staymate",
-      brief: "Helps landlords manage tenants, rent and availability.",
-      isTeam: true,
-      team: [
-        {
-          name: "Shubham Sharma",
-          avatar: "/avatars/kristin.jpg",
-          github: "https://github.com/kristin",
-          linkedin: "https://linkedin.com/in/kristin",
-        },
-        {
-          name: "Urvashiba Rana",
-          avatar: "/avatars/dianne.jpg",
-          github: "https://github.com/dianne",
-          linkedin: "https://linkedin.com/in/dianne",
-        },
-      ],
-    },
-        {
-        id: "Inventory Tool",
-        tech: "React",
-        desc: "Track stock and roles in real-time using Firebase.",
-        link: "https://github.com/user/inventory-tool",
-        isTeam: true,
-        images: ["/images/inventory1.png", "/images/inventory2.png"],
-        brief:
-          "Allows warehouse tracking, role management, and sync with Firebase in real-time. Designed for performance.",
-        team: [
-          {
-            name: "Kristin Watson",
-            avatar: "/avatars/kristin.jpg",
-            github: "https://github.com/kristin",
-            linkedin: "https://linkedin.com/in/kristin",
-          },
-          {
-            name: "Dianne Russell",
-            avatar: "/avatars/dianne.jpg",
-            github: "https://github.com/dianne",
-            linkedin: "https://linkedin.com/in/dianne",
-          },
-        ]
-      },
-      {
-        id: "Clothing E-Commerce",
-        tech: "DotNot",
-        desc: "Storefront with categories and products & Deployment Ready !!",
-        link: "https://github.com/user/ecommerce",
-        images: ["/images/inventory1.png", "/images/inventory2.png"],
-        brief:
-          "A full-stack e-commerce app with .NET backend, product listings, cart, payment gateway integration, and admin panel.",
-      },
-      {
-        id: "Spotify Clone",
-        tech: "HTML | CSS | JS",
-        desc: "A Music Player Clone.",
-        link: "https://github.com/user/spotify-clone",
-        images: ["/images/inventory1.png", "/images/inventory2.png"],
-        brief:
-          "Frontend Spotify-inspired music UI built using pure HTML, CSS, and JavaScript. Responsive with interactive controls.",
-      },
-  ];
-
+  // Projects data arr
   // Skills array
-  const skills = [
-    "HTML",
-    "CSS",
-    "JS",
-    "React",
-    "Node",
-    "MongoDB",
-    "Flutter",
-    "PHP",
-    "Python",
-    "Java",
-    "MySQL",
-  ];
-
   // Testimonials array
-  const testimonials = [
-    {
-      name: "Ravi Sharma",
-      text: "Ayush is a highly dedicated developer. His ability to manage complex problems and provide clean, scalable solutions is outstanding.",
-    },
-    {
-      name: "Neha Verma",
-      text: "He always exceeds expectations and communicates ideas clearly. It's a pleasure working with him!",
-    },
-  ];
-
   return (
     <main
       className={`${
-        darkMode ? "bg-[#0f1117] text-white" : "bg-[#f5f5f7] text-black"
+        /* background color of website */
+        darkMode ? "bg-[#12151f] text-white" : "bg-[#f5f5f7] text-black"
       } transition-all duration-500`}
     >
       {/* Header Section */}
-      <header
-        className={`fixed w-full z-50 ${
-          darkMode ? "bg-white/5" : "bg-white/80"
-        } backdrop-blur-md shadow-md`}
-      >
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold tracking-tight">Ayush Gajjar</h1>
-          {/* Main Navigation - hidden on mobile */}
-          <nav className="space-x-6 font-medium hidden md:block">
-            {["about", "skills", "projects", "testimonials", "contact"].map(
-              (sec) => (
-                <a
-                  key={sec}
-                  href={`#${sec}`}
-                  className="relative inline-block after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-indigo-500 after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  {sec.toUpperCase()}
-                </a>
-              )
-            )}
-          </nav>
-          {/* Theme toggle and mobile menu button */}
-          <div className="flex items-center space-x-3">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full bg-indigo-500 text-white shadow hover:scale-110 transition"
-            >
-              {darkMode ? (
-                <SunMedium className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-            <button
-              className="md:hidden"
-              onClick={() => setSidebarOpen(true)}
-              aria-label="open menu"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Sidebar - Animated with Framer Motion */}
-      <AnimatePresence>
-        {sidebarOpen && (
-          <>
-            {/* Overlay */}
-            <motion.div
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSidebarOpen(false)}
-            />
-            {/* Sidebar Content */}
-            <motion.aside
-              className={`fixed top-0 right-0 h-full w-54 z-50 p-6 flex flex-col shadow-xl ${
-                darkMode ? "bg-black text-white" : "bg-white text-black"
-              }`}
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-            >
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold">Menu</h2>
-                <button
-                  onClick={() => setSidebarOpen(false)}
-                  aria-label="close menu"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              {/* Mobile Navigation Links */}
-              <nav className="flex flex-col space-y-4 font-medium">
-                {["about", "skills", "projects", "testimonials", "contact"].map(
-                  (sec) => (
-                    <a
-                      key={sec}
-                      href={`#${sec}`}
-                      onClick={() => setSidebarOpen(false)}
-                      className="hover:text-indigo-500"
-                    >
-                      {sec.toUpperCase()}
-                    </a>
-                  )
-                )}
-              </nav>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
-
+     <Header
+  darkMode={darkMode}
+  setDarkMode={setDarkMode}
+  sidebarOpen={sidebarOpen}
+  setSidebarOpen={setSidebarOpen}
+/>
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24">
-        <motion.div initial="hidden" animate="show" variants={sectionFade}>
-          {/* Lottie Animation */}
-          <div className="mb-6">
-            <Lottie
-              options={{ loop: true, autoplay: true, animationData }}
-              height={300}
-              width={300}
-            />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Hey, I'm Ayush Gajjar 🚀
-          </h1>
-          {/* Typewriter Effect */}
-          <p className="text-xl mb-6">
-            I'm a{" "}
-            <span className="font-semibold text-indigo-500">
-              <Typewriter
-                words={[
-                  "Software Developer",
-                  "MERN Stack Dev",
-                  "Application Dev",
-                ]}
-                loop
-                cursor
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1000}
-              />
-            </span>
-          </p>
-          {/* Call-to-action Button */}
-          <a href="#projects">
-            <Button className="bg-indigo-500 text-white px-6 py-2 rounded-full shadow hover:bg-indigo-600">
-              View Projects
-            </Button>
-          </a>
-        </motion.div>
-      </section>
-
+     
+<Hero />
       {/* About Section */}
-      <motion.section
-        id="about"
-        className="py-20 px-6 max-w-4xl mx-auto text-center"
-        initial="hidden"
-        whileInView="show"
-        variants={sectionFade}
-        viewport={{ once: true }}
-      >
-        {/* Profile Image */}
-        <motion.div
-          className="mb-10 flex justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <img
-            src="/profile.jpg"
-            alt="Profile"
-            className="w-60 h-60 sm:w-72 sm:h-72 rounded-full border-4 border-indigo-500 shadow-2xl object-cover"
-          />
-        </motion.div>
-        {/* Social Links */}
-        <div className="flex justify-center space-x-20 mb-3">
-          <a href="https://github.com/ayushgajjar123" target="_blank">
-            <FaGithub className="text-2xl hover:text-indigo-600 transition text-indigo-500" />
-          </a>
-          <a href="https://www.linkedin.com/in/ayushgajjar123" target="_blank">
-            <FaLinkedin className="text-2xl hover:text-indigo-600 transition text-indigo-500" />
-          </a>
-          <a href="https://instagram.com/ayushgajjar.exe" target="_blank">
-            <FaInstagram className="text-2xl hover:text-indigo-600 transition text-indigo-500" />
-          </a>
-        </div>
-
-        {/* About Card */}
-        <div className={`${glassCard} p-6 md:p-10`}>
-          <h2 className="text-3xl font-bold mb-4">About Me</h2>
-          <p className="mb-4 text-gray-500 dark:text-gray-400 text-sm md:text-base">
-            I'm <strong>Ayush Gajjar</strong>, a full-stack developer passionate
-            about the{" "}
-            <span className="text-indigo-500 font-semibold">MERN stack</span>{" "}
-            and <span className="text-indigo-500 font-semibold">Flutter</span>.
-            I build scalable and intuitive software, currently pursuing MCA at
-            LJ University.
-          </p>
-          <p className="text-sm italic text-gray-900 dark:text-gray-400">
-            "Code with purpose. Build with passion."
-          </p>
-        </div>
-      </motion.section>
+     <About/>
 
       {/* Skills Section */}
-      <motion.section
-        id="skills"
-        className="py-20 px-6 max-w-6xl mx-auto"
-        initial="hidden"
-        whileInView="show"
-        variants={sectionFade}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-3xl font-bold text-center mb-10">Skills Heatmap</h2>
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {skills.map((skill, index) => {
-            // Random heat level for visualization
-            const heatLevel = Math.floor(Math.random() * 3); // simulate 0-2
-            const heatColors = darkMode
-              ? ["bg-green-800", "bg-yellow-600", "bg-red-600"]
-              : ["bg-green-200", "bg-yellow-300", "bg-red-300"];
-            const textColors = darkMode ? "text-white" : "text-black";
-
-            return (
-              <motion.div
-                key={skill}
-                className={`p-4 rounded-lg text-sm font-medium text-center cursor-pointer transition-transform duration-300 hover:scale-105 hover:brightness-125 shadow ${heatColors[heatLevel]} ${textColors}`}
-                style={{ userSelect: "none" }}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.015 }}
-              >
-                {skill}
-              </motion.div>
-            );
-          })}
-        </div>
-      </motion.section>
-
+    <Skills/>
       {/* Project Section */}
-      <motion.section 
-        id="projects"
-        className="py-20 px-6 max-w-6xl mx-auto"
-        initial="hidden"
-        whileInView="show"
-        variants={sectionFade}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-3xl font-bold text-center mb-10">Projects</h2>
-
-        {/* Filter Buttons */}
-        <div className="flex justify-center gap-4 mb-6 flex-wrap">
-          {["All", "Team Project", "React", "Flutter", "HTML | CSS | JS", "DotNot", "PHP"].map(
-            (tech) => (
-              <motion.div
-                key={tech}
-                onClick={() => setFilter(tech)}
-                className={`px-5 py-2 rounded-full border text-sm cursor-pointer transition-all transform hover:scale-110 ${
-                  filter === tech
-                    ? darkMode
-                      ? "bg-white/20 text-white border-white/10"
-                      : "bg-gray-300 text-black border-gray-400"
-                    : darkMode
-                    ? "bg-white/10 text-white border-white/10 hover:bg-white/20"
-                    : "bg-gray-200 text-black border-gray-300 hover:bg-gray-300"
-                }`}
-                style={{ userSelect: "none" }}
-              >
-                {tech}
-              </motion.div>
-            )
-          )}
-        </div>
-
-        {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-          {projects.filter((p) =>
-            filter === "All"
-              ? true
-              : filter === "Team Project"
-              ? p.isTeam === true
-              : p.tech.includes(filter)
-          ).map((proj) => {
-            const isOpen = expandedId === proj.id;
-
-            return (
-              <div
-                key={proj.id}
-                onClick={() => setExpandedId(isOpen ? null : proj.id)}
-                onMouseLeave={() => {
-                  if (expandedId === proj.id) setExpandedId(null);
-                }}
-                className={`
-                  ${glassCard}
-                  flex flex-col justify-between rounded-xl transition-all duration-500 cursor-pointer
-                  p-6 bg-white/60 dark:bg-white/10 text-center
-                  ${isOpen ? "border-2 border-white ring-2 ring-white/60" : "border border-transparent"}
-                  hover:border-black dark:hover:border-white
-                `}
-              >
-                {/* Project Title */}
-                <h3 className="text-2xl font-semibold text-indigo-600 mb-2">
-                  {proj.id}
-                </h3>
-
-                {/* Project Metadata */}
-                <div className="flex justify-center items-center gap-2 mb-3 text-sm text-gray-600 dark:text-gray-300">
-                  <span>{proj.tech}</span>
-                  {Array.isArray(proj.team) && proj.team.length > 0 && (
-                    <span className="flex items-center gap-1 text-green-500 font-medium">
-                      <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="12" />
-                      </svg>
-                      Team Project
-                    </span>
-                  )}
-                </div>
-
-                {/* Project Description */}
-                <p className="text-gray-700 dark:text-gray-300 text-sm mb-3 px-2">
-                  {proj.desc}
-                </p>
-
-                {/* Project Actions */}
-                <div className="flex justify-center gap-4 mb-2">
-                  <a
-                    href={proj.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-indigo-500 text-sm font-medium underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    GitHub
-                  </a>
-
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setExpandedId(isOpen ? null : proj.id);
-                    }}
-                    className="text-indigo-500 text-sm font-medium underline"
-                  >
-                    {isOpen ? "Close" : "Read more"}
-                  </button>
-                </div>
-
-                {/* Expandable Content */}
-                <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                    isOpen ? "max-h-[700px] mt-4" : "max-h-0"
-                  }`}
-                >
-                  {/* Project Images Carousel */}
-                  {proj.images && (
-                    <Swiper
-                      modules={[Pagination]}
-                      pagination={{ clickable: true }}
-                      className="rounded-xl overflow-hidden mb-4"
-                    >
-                      {proj.images.map((img, i) => (
-                        <SwiperSlide key={i}>
-                          <img
-                            src={img}
-                            alt={`Slide ${i}`}
-                            className="w-full h-64 object-cover rounded-xl"
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  )}
-
-                  {/* Team Members Section */}
-                  {proj.team && (
-                    <div className="mt-4">
-                      <h4 className="text-lg font-semibold mb-2">Team Members</h4>
-                      <div className="flex flex-wrap justify-center gap-4">
-                        {proj.team.map((member, i) => (
-                          <div
-                            key={i}
-                            className="bg-white/5 dark:bg-white/10 p-4 rounded-xl text-center w-36"
-                          >
-                            <img
-                              src={member.avatar}
-                              alt={member.name}
-                              className="w-16 h-16 rounded-full mx-auto mb-2 object-cover"
-                            />
-                            <p className="text-sm font-medium">{member.name}</p>
-                            <div className="flex justify-center gap-2 mt-1 text-indigo-500">
-                              <a href={member.github} target="_blank" rel="noreferrer">
-                                <FaGithub />
-                              </a>
-                              <a href={member.linkedin} target="_blank" rel="noreferrer">
-                                <FaLinkedin />
-                              </a>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </motion.section>
+      <Projects
+  darkMode={darkMode}
+  />
 
       {/* Testimonials Section */}
-      <motion.section
-        id="testimonials"
-        className="py-20 px-6 max-w-3xl mx-auto"
-        initial="hidden"
-        whileInView="show"
-        variants={sectionFade}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-3xl font-bold text-center mb-10">Testimonials</h2>
-        <div className="space-y-6">
-          {testimonials.map((t, idx) => (
-            <div key={idx} className={`${glassCard} relative`}>
-              <FaQuoteLeft className="absolute top-4 left-4 text-indigo-500" />
-              <p className="italic text-sm mb-3 pl-8">{t.text}</p>
-              <p className="text-sm text-right font-semibold">— {t.name}</p>
-            </div>
-          ))}
-        </div>
-      </motion.section>
-      
-      {/* Contact Section */}
-      <motion.section
-        id="contact"
-        className="py-20 px-6 max-w-2xl mx-auto"
-        initial="hidden"
-        whileInView="show"
-        variants={sectionFade}
-        viewport={{ once: true }}
-      >
-        <div className="flex justify-center">
-          <div className={`w-full md:w-3/4 lg:w-2/3 ${glassCard}`}>
-            <h2 className="text-3xl font-bold text-center mb-8">
-              Let's Connect
-            </h2>
-            {/* Contact Form */}
-            <form
-              className="space-y-4"
-              method="POST"
-              action="https://formspree.io/f/mjkrjpnj"
-            >
-              <Input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="dark:text-black"
-              />
-              <Input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="dark:text-black"
-              />
-              <Textarea
-                name="message"
-                placeholder="Your Message"
-                required
-                className="dark:text-black"
-              />
-              <Button
-                type="submit"
-                className="bg-indigo-500 text-white w-full hover:bg-indigo-600"
-              >
-                Send Message
-              </Button>
-            </form>
-          </div>
-        </div>
-      </motion.section>
+      <Testimonials/>
+            {/* Contact Section */}
+            <Contact/>
 
       {/* Footer Section */}
-      <footer className="py-10 px-4 mt-20 text-center max-w-4xl mx-auto">
-        <div className="flex justify-center space-x-6 mb-4">
-          <a href="https://github.com/ayush101x" target="_blank">
-            <Github />
-          </a>
-          <a href="www.linkedin.com/in/ayushgajjar123" target="_blank">
-            <Linkedin />
-          </a>
-          <a href="https://instagram.com/ayushgajjar.exe" target="_blank">
-            <Instagram />
-          </a>
-        </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          💻 Software Developer | 🚀 MERN Stack & Flutter Dev · Ayush Gajjar · ©{" "}
-          {new Date().getFullYear()}
-        </p>
-      </footer>
+      <Footer/>
     </main>
   );
 }

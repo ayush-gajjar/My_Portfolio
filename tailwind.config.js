@@ -19,3 +19,4 @@ module.exports = {
 },
   plugins: [],
 }
+const glassCard = `bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl shadow-lg`;
