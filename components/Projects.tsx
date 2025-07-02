@@ -23,21 +23,21 @@ const projects = [
         avatar: "Ayush/Ayushprofile.jpg",
         github: "https://github.com/ayush101x",
         linkedin: "https://www.linkedin.com/in/ayushgajjar123",
-        role:"Co-Lead & Full Stack",
+        role: "Co-Lead & Full Stack",
       },
       {
         name: "Shubham Sharma",
         avatar: "Team-Shubham/Shubhamprofile.jpg",
         github: "https://github.com/ssharma292003",
         linkedin: "https://www.linkedin.com/in/shubham-sharma-5793122b0/",
-        role:"Lead & Backend dev",
+        role: "Lead & Backend dev",
       },
       {
         name: "Urvashiba Rana",
         avatar: "Team-Urvashi/Urvashiprofile.jpg",
         github: "https://github.com/urvashibarana",
         linkedin: "https://www.linkedin.com/in/urvashibarana04",
-        role:"Backend dev",
+        role: "Backend dev",
       },
     ],
   },
@@ -56,21 +56,21 @@ const projects = [
         avatar: "Ayush/Ayushprofile.jpg",
         github: "https://github.com/ayush101x",
         linkedin: "https://www.linkedin.com/in/ayushgajjar123",
-        role:"Co-Lead & Full Stack",
+        role: "Co-Lead & Full Stack",
       },
       {
         name: "Shubham Sharma",
         avatar: "Team-Shubham/Shubhamprofile.jpg",
         github: "https://github.com/ssharma292003",
         linkedin: "https://www.linkedin.com/in/shubham-sharma-5793122b0/",
-        role:"lead & Backend dev",
+        role: "lead & Backend dev",
       },
       {
         name: "Urvashiba Rana",
         avatar: "Team-Urvashi/Urvashiprofile.jpg",
         github: "https://github.com/urvashibarana",
         linkedin: "https://www.linkedin.com/in/urvashibarana04",
-        role:"Backend dev",
+        role: "Backend dev",
       },
     ],
   },
@@ -79,7 +79,7 @@ const projects = [
     tech: ".net",
     desc: "Storefront with categories and products & Deployment Ready !!",
     link: "https://github.com/user/ecommerce",
-    images: ["/Vintage-Proj/VintageHub1.jpg","/Vintage-Proj/VintageHub3.jpg","/Vintage-Proj/VintageHub2.jpg"],
+    images: ["/Vintage-Proj/VintageHub1.jpg", "/Vintage-Proj/VintageHub3.jpg", "/Vintage-Proj/VintageHub2.jpg"],
     brief:
       "A full-stack e-commerce app with .NET backend, product listings, cart, payment gateway integration, and admin panel.",
   },
@@ -130,15 +130,14 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
             <motion.div
               key={tech}
               onClick={() => setFilter(tech)}
-              className={`px-5 py-2 rounded-full text-sm  cursor-pointer transition-all transform hover:scale-110 ${
-                filter === tech
+              className={`px-5 py-2 rounded-full text-sm  cursor-pointer transition-all transform hover:scale-110 ${filter === tech
                   ? darkMode
-                    ? "bg-white/20 text-white  "
+                    ? "bg-white/20 text-white"
                     : "bg-gray-400 text-black"
                   : darkMode
-                  ? "bg-white/10 text-white border-white/10 hover:bg-white/20 "
-                  : "bg-gray-200 text-black border-gray-300 hover:bg-gray-300"
-              }`}
+                    ? "bg-white/10 text-white border-white/10 hover:bg-white/20"
+                    : "bg-gray-200 text-black border-gray-300 hover:bg-gray-300"
+                }`}
               style={{ userSelect: "none" }}
             >
               {tech}
@@ -153,8 +152,8 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
             filter === "All"
               ? true
               : filter === "Team Project"
-              ? p.isTeam === true
-              : p.tech.includes(filter)
+                ? p.isTeam === true
+                : p.tech.includes(filter)
           )
           .map((proj) => {
             const isOpen = expandedId === proj.id;
@@ -165,29 +164,39 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                 onMouseLeave={() => {
                   if (expandedId === proj.id) setExpandedId(null);
                 }}
-                className={`flex flex-col rounded-xl p-6 cursor-pointer transition-all duration-300 
-                  bg-gray-800 border-2 border-gray-700 text-white
-                  ${isOpen ? "ring-2 ring-indigo-500" : ""}
-                  shadow-lg hover:shadow-xl`}
+                className={`flex flex-col rounded-xl p-6 cursor-pointer transition-all duration-300
+  ${darkMode ? "bg-gray-800 text-white border-gray-700" : "bg-white text-black border-gray-200"}
+  ${isOpen ? "ring-2 ring-indigo-500" : ""}
+  border-2 shadow-lg hover:shadow-xl`}
+  
                 whileHover={{
                   scale: 1.02,
                   borderColor: "#ffffff",
-                  transition: { duration: 0.03 }
+                  transition: { duration: 0.03 },
                 }}
-                transition={{ 
+                transition={{
                   duration: 0.3,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 <h3 className="text-2xl font-semibold text-indigo-400 mb-2">
                   {proj.id}
                 </h3>
 
-                <div className="flex justify-center items-center gap-2 mb-3 text-sm text-gray-400">
+                <div
+                  className={`flex justify-center items-center gap-2 mb-3 text-sm ${darkMode ? "text-gray-400" : "text-gray-700"
+                    }`}
+                >
                   <span>{proj.tech}</span>
                   {proj.isTeam && (
-                    <span className="flex items-center gap-1 text-green-400 font-medium">
-                      <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <span
+                      className={`flex items-center gap-1 font-medium ${darkMode ? "text-green-400" : "text-green-700"
+                        }`}
+                    >
+                      <svg
+                        className="w-3.5 h-3.5 fill-current"
+                        viewBox="0 0 24 24"
+                      >
                         <circle cx="12" cy="12" r="12" />
                       </svg>
                       Team Project
@@ -195,14 +204,22 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                   )}
                 </div>
 
-                <p className="text-gray-300 text-sm mb-3 px-2">{proj.desc}</p>
+                <p
+                  className={`text-sm mb-3 px-2 ${darkMode ? "text-gray-300" : "text-black"
+                    }`}
+                >
+                  {proj.desc}
+                </p>
 
                 <div className="flex justify-center gap-4 mb-2">
                   <a
                     href={proj.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-indigo-400 text-sm font-medium underline hover:text-indigo-300"
+                    className={`text-sm font-medium underline ${darkMode
+                        ? "text-indigo-400 hover:text-indigo-300"
+                        : "text-indigo-700 hover:text-indigo-600"
+                      }`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     GitHub
@@ -212,16 +229,18 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                       e.stopPropagation();
                       handleCardClick(proj.id);
                     }}
-                    className="text-indigo-400 text-sm font-medium underline hover:text-indigo-300"
+                    className={`text-sm font-medium underline ${darkMode
+                        ? "text-indigo-400 hover:text-indigo-300"
+                        : "text-indigo-700 hover:text-indigo-600"
+                      }`}
                   >
                     {isOpen ? "Close" : "Read more"}
                   </button>
                 </div>
 
                 <motion.div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isOpen ? "max-h-[700px] mt-4" : "max-h-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-[700px] mt-4" : "max-h-0"
+                    }`}
                 >
                   {proj.images && (
                     <Swiper
@@ -233,7 +252,7 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                         <SwiperSlide key={i}>
                           <img
                             src={img}
-                            alt={`Slide ${i}`}
+                            // alt={Slide ${i}}
                             className="w-full h-64 object-cover rounded-xl"
                           />
                         </SwiperSlide>
@@ -243,12 +262,20 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
 
                   {proj.team && (
                     <div className="mt-4">
-                      <h4 className="text-lg font-semibold mb-2 text-white">Team Members</h4>
+                      <h4
+                        className={`text-lg font-semibold mb-2 ${darkMode ? "text-white" : "text-black"
+                          }`}
+                      >
+                        Team Members
+                      </h4>
                       <div className="flex flex-wrap justify-center gap-4">
                         {proj.team.map((member, i) => (
                           <motion.div
                             key={i}
-                            className="bg-gray-700 p-4 rounded-xl text-center w-36"
+                            className={`p-4 rounded-xl text-center w-36 shadow ${darkMode
+                                ? "bg-gray-700 text-white"
+                                : "bg-white text-black"
+                              }`}
                             whileHover={{ scale: 1.03 }}
                             transition={{ duration: 0.2 }}
                           >
@@ -257,27 +284,42 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                               alt={member.name}
                               className="w-16 h-16 rounded-full mx-auto mb-2 object-cover"
                             />
-                            <p className="text-sm font-medium text-white">{member.name}</p>
-                            <p className="text-xs text-gray-400 mb-2">{member.role}</p>
+                            <p
+                              className={`text-sm font-medium ${darkMode ? "text-white" : "text-black"
+                                }`}
+                            >
+                              {member.name}
+                            </p>
+                            <p
+                              className={`text-xs mb-2 ${darkMode ? "text-gray-400" : "text-black"
+                                }`}
+                            >
+                              {member.role}
+                            </p>
 
                             <div className="flex justify-center gap-2 mt-1">
-                              <a 
-                                href={member.github} 
-                                target="_blank" 
+                              <a
+                                href={member.github}
+                                target="_blank"
                                 rel="noreferrer"
-                                className="text-gray-400 hover:text-white"
+                                className={`hover:text-white ${darkMode
+                                    ? "text-gray-400"
+                                    : "text-gray-600 hover:text-black"
+                                  }`}
                               >
                                 <FaGithub />
                               </a>
-                              <a 
-                                href={member.linkedin} 
-                                target="_blank" 
+                              <a
+                                href={member.linkedin}
+                                target="_blank"
                                 rel="noreferrer"
-                                className="text-gray-400 hover:text-white"
+                                className={`hover:text-white ${darkMode
+                                    ? "text-gray-400"
+                                    : "text-gray-600 hover:text-black"
+                                  }`}
                               >
                                 <FaLinkedin />
                               </a>
-                              
                             </div>
                           </motion.div>
                         ))}
