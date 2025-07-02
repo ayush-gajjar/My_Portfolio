@@ -268,7 +268,9 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                         Team Members
                       </h4>
                       <div className="w-full overflow-x-auto py-2">
-                        <div className="flex space-x-4 w-max">
+                        <div className="flex space-x-4 w-max scrolling-x hide-scrollbar md:animate-none">
+
+                          
                           {proj.team.map((member, i) => (
                             <motion.div
                               key={i}
@@ -276,8 +278,8 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                                   ? "bg-gray-700 text-white"
                                   : "bg-white text-black"
                                 }`}
-                              whileHover={{ scale: 1.03 }}
-                              transition={{ duration: 0.2 }}
+                              whileHover={{ scale: 1.1 }}
+                              transition={{ duration: 0. }}
                             >
                               <img
                                 src={member.avatar}
