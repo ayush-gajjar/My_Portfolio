@@ -23,7 +23,7 @@ const Skills = () => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
- const skills = [
+  const skills = [
     { 
       name: "HTML", 
       icon: <SiHtml5 className="text-orange-600" />, 
@@ -111,37 +111,28 @@ const Skills = () => {
   ];
 
   const handleCardClick = (index: number) => {
-    // Flip the card immediately
-    setFlippedIndex(index);
-    
-    // Only set timeout if the card is being flipped to show the back
-    if (flippedIndex !== index) {
-      // Set a timeout to flip the card back after 3 seconds
-      setTimeout(() => {
-        setFlippedIndex(null);
-      }, 3000);
-    }
+    setFlippedIndex(flippedIndex === index ? null : index);
   };
 
   return (
-    <section id="skills" className="py-5 px-5 max-w-6xl mx-auto">
+    <section id="skills" className="py-5 px-4 sm:px-5 max-w-6xl mx-auto"> {/* Changed px-5 to px-4 sm:px-5 */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-5xl font-bold text-center mb-12">My Stack</h2>
+        <h2 className="text-3xl sm:text-5xl font-bold text-center mb-8 sm:mb-12">My Stack</h2> {/* Adjusted text size and margins */}
 
-        <div className="grid grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-10"> {/* Responsive grid */}
           {skills.map((skill, index) => (
             <div 
               key={skill.name} 
-              className="perspective-1000 h-48 relative"
+              className="perspective-1000 h-40 sm:h-48 relative" // Adjusted height for mobile
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => {
                 setHoveredIndex(null);
-                // Don't immediately flip back when mouse leaves
+                if (flippedIndex === index) setFlippedIndex(null);
               }}
             >
               <motion.div
@@ -149,15 +140,9 @@ const Skills = () => {
                 animate={{ 
                   rotateY: flippedIndex === index ? 180 : 0,
                   zIndex: hoveredIndex === index ? 20 : 1,
-                  scale: hoveredIndex === index ? 1.3 : 1
+                  scale: hoveredIndex === index ? 1.1 : 1 // Reduced scale effect on mobile
                 }}
-                transition={{ 
-                  type: "spring", 
-                  stiffness: 300, 
-                  damping: 20,
-                  // Added delay for the flip back animation
-                  delay: flippedIndex === index ? 0 : 0.2
-                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => handleCardClick(index)}
                 style={{
                   transformOrigin: "center",
@@ -169,24 +154,24 @@ const Skills = () => {
               >
                 {/* Front of Card */}
                 <motion.div
-                  className={`absolute backface-hidden w-full h-full p-4 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer
+                  className={`absolute backface-hidden w-full h-full p-3 sm:p-4 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer
                     bg-white border border-gray-500 shadow-sm`}
                   style={{ backfaceVisibility: 'hidden' }}
                 >
-                  <div className="text-5xl">
+                  <div className="text-4xl sm:text-5xl"> {/* Adjusted icon size */}
                     {skill.icon}
                   </div>
-                  <span className="text-lg font-medium text-gray-800">{skill.name}</span>
-                  <span className="text-sm text-gray-600">{skill.years}</span>
+                  <span className="text-base sm:text-lg font-medium text-gray-800">{skill.name}</span> {/* Adjusted text size */}
+                  <span className="text-xs sm:text-sm text-gray-600">{skill.years}</span> {/* Adjusted text size */}
                 </motion.div>
 
                 {/* Back of Card */}
                 <motion.div
-                  className={`absolute backface-hidden w-full h-full p-4 rounded-xl flex items-center justify-center cursor-pointer
+                  className={`absolute backface-hidden w-full h-full p-3 sm:p-4 rounded-xl flex items-center justify-center cursor-pointer
                     bg-blue-50 border border-blue-100 shadow-sm rotate-y-180`}
                   style={{ backfaceVisibility: 'hidden' }}
                 >
-                  <p className="text-sm text-gray-700 text-center px-2">
+                  <p className="text-xs sm:text-sm text-gray-700 text-center px-1 sm:px-2"> {/* Adjusted text size and padding */}
                     {skill.description}
                   </p>
                 </motion.div>
