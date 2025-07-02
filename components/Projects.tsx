@@ -15,6 +15,7 @@ const projects = [
     desc: "Manages PG rooms and rent, built in Flutter & Firebase.",
     link: "https://github.com/stockbuddy07/pg_helper",
     brief: "Helps landlords manage tenants, rent and availability.",
+    images: ["/Smart-PG/AdminHomePage.jpg"],
     isTeam: true,
     team: [
       {
