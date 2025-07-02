@@ -157,7 +157,7 @@ const Skills = ({ darkMode }: { darkMode: boolean }) => {
                 {/* Front of Card */}
                 <motion.div
                   className={`absolute backface-hidden w-full h-full p-3 sm:p-4 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer
-                    ${darkMode ? "bg-black border-white" : " border-gray-500"} border shadow-sm`}
+                    ${darkMode ? " border-white" : " border-gray-500"} border shadow-sm`}
                   style={{ backfaceVisibility: 'hidden' }}
                 >
                   <div className="text-4xl sm:text-5xl">

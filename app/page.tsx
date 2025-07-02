@@ -104,7 +104,7 @@ export default function Portfolio() {
      <About darkMode={darkMode}/>
 
       {/* Skills Section */}
-    <Skills/>
+    <Skills darkMode={darkMode}/>
       {/* Project Section */}
       <Projects
   darkMode={darkMode}
