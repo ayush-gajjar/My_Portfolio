@@ -25,7 +25,7 @@
   }
 
   .scrolling-x {
-    animation: scroll-x 20s linear infinite;
+    animation: scroll-x 15s linear infinite;
   }
 
   .hide-scrollbar {

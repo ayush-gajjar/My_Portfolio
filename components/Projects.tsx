@@ -19,18 +19,18 @@ const projects = [
     isTeam: true,
     team: [
       {
-        name: "Ayush Gajjar",
-        avatar: "Ayush/Ayushprofile.jpg",
-        github: "https://github.com/ayush101x",
-        linkedin: "https://www.linkedin.com/in/ayushgajjar123",
-        role: "Co-Lead & Full Stack",
-      },
-      {
         name: "Shubham Sharma",
         avatar: "Team-Shubham/Shubhamprofile.jpg",
         github: "https://github.com/ssharma292003",
         linkedin: "https://www.linkedin.com/in/shubham-sharma-5793122b0/",
         role: "Lead & Backend dev",
+      },
+       {
+        name: "Ayush Gajjar",
+        avatar: "Ayush/Ayushprofile.jpg",
+        github: "https://github.com/ayush101x",
+        linkedin: "https://www.linkedin.com/in/ayushgajjar123",
+        role: "Co-Lead & Full Stack",
       },
       {
         name: "Urvashiba Rana",
@@ -52,18 +52,18 @@ const projects = [
       "Allows warehouse tracking, role management, and sync with Firebase in real-time. Designed for performance.",
     team: [
       {
-        name: "Ayush Gajjar",
-        avatar: "Ayush/Ayushprofile.jpg",
-        github: "https://github.com/ayush101x",
-        linkedin: "https://www.linkedin.com/in/ayushgajjar123",
-        role: "Co-Lead & Full Stack",
-      },
-      {
         name: "Shubham Sharma",
         avatar: "Team-Shubham/Shubhamprofile.jpg",
         github: "https://github.com/ssharma292003",
         linkedin: "https://www.linkedin.com/in/shubham-sharma-5793122b0/",
         role: "lead & Backend dev",
+      },
+      {
+        name: "Ayush Gajjar",
+        avatar: "Ayush/Ayushprofile.jpg",
+        github: "https://github.com/ayush101x",
+        linkedin: "https://www.linkedin.com/in/ayushgajjar123",
+        role: "Co-Lead & Full Stack",
       },
       {
         name: "Urvashiba Rana",
@@ -279,7 +279,7 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                                   : "bg-white text-black"
                                 }`}
                               whileHover={{ scale: 1.1 }}
-                              transition={{ duration: 0. }}
+                              transition={{ duration: 0.5 }}
                             >
                               <img
                                 src={member.avatar}
