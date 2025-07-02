@@ -252,7 +252,6 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                         <SwiperSlide key={i}>
                           <img
                             src={img}
-                            // alt={Slide ${i}}
                             className="w-full h-64 object-cover rounded-xl"
                           />
                         </SwiperSlide>
@@ -268,61 +267,63 @@ const Projects = ({ darkMode }: { darkMode: boolean }) => {
                       >
                         Team Members
                       </h4>
-                      <div className="flex flex-wrap justify-center gap-4">
-                        {proj.team.map((member, i) => (
-                          <motion.div
-                            key={i}
-                            className={`p-4 rounded-xl text-center w-36 shadow ${darkMode
-                                ? "bg-gray-700 text-white"
-                                : "bg-white text-black"
-                              }`}
-                            whileHover={{ scale: 1.03 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <img
-                              src={member.avatar}
-                              alt={member.name}
-                              className="w-16 h-16 rounded-full mx-auto mb-2 object-cover"
-                            />
-                            <p
-                              className={`text-sm font-medium ${darkMode ? "text-white" : "text-black"
+                      <div className="w-full overflow-x-auto py-2">
+                        <div className="flex space-x-4 w-max">
+                          {proj.team.map((member, i) => (
+                            <motion.div
+                              key={i}
+                              className={`p-4 rounded-xl text-center w-36 shadow flex-shrink-0 ${darkMode
+                                  ? "bg-gray-700 text-white"
+                                  : "bg-white text-black"
                                 }`}
+                              whileHover={{ scale: 1.03 }}
+                              transition={{ duration: 0.2 }}
                             >
-                              {member.name}
-                            </p>
-                            <p
-                              className={`text-xs mb-2 ${darkMode ? "text-gray-400" : "text-black"
-                                }`}
-                            >
-                              {member.role}
-                            </p>
+                              <img
+                                src={member.avatar}
+                                alt={member.name}
+                                className="w-16 h-16 rounded-full mx-auto mb-2 object-cover"
+                              />
+                              <p
+                                className={`text-sm font-medium ${darkMode ? "text-white" : "text-black"
+                                  }`}
+                              >
+                                {member.name}
+                              </p>
+                              <p
+                                className={`text-xs mb-2 ${darkMode ? "text-gray-400" : "text-black"
+                                  }`}
+                              >
+                                {member.role}
+                              </p>
 
-                            <div className="flex justify-center gap-2 mt-1">
-                              <a
-                                href={member.github}
-                                target="_blank"
-                                rel="noreferrer"
-                                className={`hover:text-white ${darkMode
-                                    ? "text-gray-400"
-                                    : "text-gray-600 hover:text-black"
-                                  }`}
-                              >
-                                <FaGithub />
-                              </a>
-                              <a
-                                href={member.linkedin}
-                                target="_blank"
-                                rel="noreferrer"
-                                className={`hover:text-white ${darkMode
-                                    ? "text-gray-400"
-                                    : "text-gray-600 hover:text-black"
-                                  }`}
-                              >
-                                <FaLinkedin />
-                              </a>
-                            </div>
-                          </motion.div>
-                        ))}
+                              <div className="flex justify-center gap-2 mt-1">
+                                <a
+                                  href={member.github}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className={`hover:text-white ${darkMode
+                                      ? "text-gray-400"
+                                      : "text-gray-600 hover:text-black"
+                                    }`}
+                                >
+                                  <FaGithub />
+                                </a>
+                                <a
+                                  href={member.linkedin}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className={`hover:text-white ${darkMode
+                                      ? "text-gray-400"
+                                      : "text-gray-600 hover:text-black"
+                                    }`}
+                                >
+                                  <FaLinkedin />
+                                </a>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   )}
