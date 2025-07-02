@@ -1,4 +1,4 @@
-"use client";
+"use client"; // <-- This directive is required for client-side interactivity
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -23,7 +23,7 @@ const Skills = () => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const skills = [
+ const skills = [
     { 
       name: "HTML", 
       icon: <SiHtml5 className="text-orange-600" />, 
@@ -111,7 +111,16 @@ const Skills = () => {
   ];
 
   const handleCardClick = (index: number) => {
-    setFlippedIndex(flippedIndex === index ? null : index);
+    // Flip the card immediately
+    setFlippedIndex(index);
+    
+    // Only set timeout if the card is being flipped to show the back
+    if (flippedIndex !== index) {
+      // Set a timeout to flip the card back after 3 seconds
+      setTimeout(() => {
+        setFlippedIndex(null);
+      }, 3000);
+    }
   };
 
   return (
@@ -122,9 +131,9 @@ const Skills = () => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-5xl font-bold text-center mb-12 ">My Stack</h2>
+        <h2 className="text-5xl font-bold text-center mb-12">My Stack</h2>
 
-        <div className="grid grid-cols-5 gap-10"> {/* Increased gap */}
+        <div className="grid grid-cols-5 gap-10">
           {skills.map((skill, index) => (
             <div 
               key={skill.name} 
@@ -132,7 +141,7 @@ const Skills = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => {
                 setHoveredIndex(null);
-                if (flippedIndex === index) setFlippedIndex(null);
+                // Don't immediately flip back when mouse leaves
               }}
             >
               <motion.div
@@ -142,11 +151,20 @@ const Skills = () => {
                   zIndex: hoveredIndex === index ? 20 : 1,
                   scale: hoveredIndex === index ? 1.3 : 1
                 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 300, 
+                  damping: 20,
+                  // Added delay for the flip back animation
+                  delay: flippedIndex === index ? 0 : 0.2
+                }}
                 onClick={() => handleCardClick(index)}
                 style={{
                   transformOrigin: "center",
                   position: "relative"
+                }}
+                whileHover={{
+                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
                 }}
               >
                 {/* Front of Card */}
@@ -165,7 +183,7 @@ const Skills = () => {
                 {/* Back of Card */}
                 <motion.div
                   className={`absolute backface-hidden w-full h-full p-4 rounded-xl flex items-center justify-center cursor-pointer
-                    bg-blue-50 border border-blue-1000 shadow-sm rotate-y-180`}
+                    bg-blue-50 border border-blue-100 shadow-sm rotate-y-180`}
                   style={{ backfaceVisibility: 'hidden' }}
                 >
                   <p className="text-sm text-gray-700 text-center px-2">
