@@ -1,4 +1,4 @@
-"use client"; // <-- This directive is required for client-side interactivity
+"use client";
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -19,7 +19,7 @@ import {
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
-const Skills = () => {
+const Skills = ({ darkMode }: { darkMode: boolean }) => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -115,20 +115,22 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-5 px-4 sm:px-5 max-w-6xl mx-auto"> {/* Changed px-5 to px-4 sm:px-5 */}
+    <section id="skills" className="py-5 px-4 sm:px-5 max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl sm:text-5xl font-bold text-center mb-8 sm:mb-12">My Stack</h2> {/* Adjusted text size and margins */}
+        <h2 className={`text-3xl sm:text-5xl font-bold text-center mb-8 sm:mb-12 `}>
+          My Stack
+        </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-10"> {/* Responsive grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           {skills.map((skill, index) => (
             <div 
               key={skill.name} 
-              className="perspective-1000 h-40 sm:h-48 relative" // Adjusted height for mobile
+              className="perspective-1000 h-40 sm:h-48 relative"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => {
                 setHoveredIndex(null);
@@ -136,11 +138,11 @@ const Skills = () => {
               }}
             >
               <motion.div
-                className="relative w-full h-full preserve-3d"
+                className="rounded-xl relative w-full h-full preserve-3d"
                 animate={{ 
                   rotateY: flippedIndex === index ? 180 : 0,
                   zIndex: hoveredIndex === index ? 20 : 1,
-                  scale: hoveredIndex === index ? 1.1 : 1 // Reduced scale effect on mobile
+                  scale: hoveredIndex === index ? 1.1 : 1
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => handleCardClick(index)}
@@ -149,29 +151,33 @@ const Skills = () => {
                   position: "relative"
                 }}
                 whileHover={{
-                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+                  boxShadow: darkMode ? "0 0 50px rgba(255, 255, 255, 0.3)" : "0 0 50px rgba(59, 130, 246, 0.5)"
                 }}
               >
                 {/* Front of Card */}
                 <motion.div
                   className={`absolute backface-hidden w-full h-full p-3 sm:p-4 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer
-                    bg-white border border-gray-500 shadow-sm`}
+                    ${darkMode ? "bg-black border-white" : " border-gray-500"} border shadow-sm`}
                   style={{ backfaceVisibility: 'hidden' }}
                 >
-                  <div className="text-4xl sm:text-5xl"> {/* Adjusted icon size */}
+                  <div className="text-4xl sm:text-5xl">
                     {skill.icon}
                   </div>
-                  <span className="text-base sm:text-lg font-medium text-gray-800">{skill.name}</span> {/* Adjusted text size */}
-                  <span className="text-xs sm:text-sm text-gray-600">{skill.years}</span> {/* Adjusted text size */}
+                  <span className={`text-base sm:text-lg font-medium`}>
+                    {skill.name}
+                  </span>
+                  <span className={`text-xs sm:text-sm `}>
+                    {skill.years}
+                  </span>
                 </motion.div>
 
                 {/* Back of Card */}
                 <motion.div
                   className={`absolute backface-hidden w-full h-full p-3 sm:p-4 rounded-xl flex items-center justify-center cursor-pointer
-                    bg-blue-50 border border-blue-100 shadow-sm rotate-y-180`}
+                    ${darkMode ? "bg-gray-900 border-gray-700" : "bg-blue-50 border-blue-100"} border shadow-sm rotate-y-180`}
                   style={{ backfaceVisibility: 'hidden' }}
                 >
-                  <p className="text-xs sm:text-sm text-gray-700 text-center px-1 sm:px-2"> {/* Adjusted text size and padding */}
+                  <p className={`text-xs sm:text-sm text-center px-1 sm:px-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
                     {skill.description}
                   </p>
                 </motion.div>

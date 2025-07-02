@@ -101,7 +101,7 @@ export default function Portfolio() {
      
 <Hero />
       {/* About Section */}
-     <About/>
+     <About darkMode={darkMode}/>
 
       {/* Skills Section */}
     <Skills/>
