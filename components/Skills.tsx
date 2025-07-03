@@ -40,31 +40,31 @@ const Skills = ({ darkMode }: { darkMode: boolean }) => {
       name: "JS", 
       icon: <SiJavascript className="text-yellow-600" />, 
       years: "5 years",
-      description: "Developed 30+ applications using modern ES6+ features and design patterns."
+      description: "Developed applications using modern ES6+ features and design patterns."
     },
     { 
       name: "React", 
       icon: <SiReact className="text-blue-500" />, 
       years: "1 years",
-      description: "Built 15+ production apps using React hooks, context API, and performance optimization."
+      description: "Built 3+ production apps using React hooks, context API, and performance optimization."
     },
     { 
       name: "Node", 
       icon: <SiNodedotjs className="text-green-600" />, 
       years: "1 years",
-      description: "Developed REST APIs and microservices handling 10K+ daily requests."
+      description: "Developed REST APIs and microservices handling daily requests."
     },
     { 
       name: "MongoDB", 
       icon: <SiMongodb className="text-green-500" />, 
       years: "1 years",
-      description: "Designed database schemas for 8+ applications with optimized queries."
+      description: "Designed database schemas for 2+ applications with optimized queries."
     },
     { 
       name: "Flutter", 
       icon: <SiFlutter className="text-blue-400" />, 
       years: "3 years",
-      description: "Created 4 cross-platform mobile apps published on both stores."
+      description: "Created 4 cross-platform mobile apps and 2 published on stores."
     },
     { 
       name: "PHP", 
@@ -76,25 +76,25 @@ const Skills = ({ darkMode }: { darkMode: boolean }) => {
       name: "Python", 
       icon: <SiPython className="text-blue-500" />, 
       years: "4 years",
-      description: "Built web scrapers, data pipelines, and automation scripts saving 100+ hours monthly."
+      description: "Built web scrapers, data pipelines, and automation scripts saving 20+ hours monthly."
     },
     { 
       name: "Java", 
       icon: <FaJava className="text-red-600" />,
       years: "3 years",
-      description: "Developed Android applications and backend services for financial systems."
+      description: "Developed Android applications and backend services."
     },
     { 
       name: "MySQL", 
       icon: <SiMysql className="text-blue-700" />, 
       years: "4 years",
-      description: "Optimized complex queries reducing response times by 70% in 3 applications."
+      description: "Optimized complex queries reducing response times by 70% in 2 applications."
     },
     { 
       name: "Figma", 
       icon: <SiFigma className="text-pink-600" />, 
       years: "4 years",
-      description: "Designed 20+ UI/UX prototypes and design systems for web and mobile apps."
+      description: "Designed 5+ UI/UX prototypes and design systems for web and mobile apps."
     },
     { 
       name: "Framer", 

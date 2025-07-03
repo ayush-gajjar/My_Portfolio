@@ -39,6 +39,8 @@ import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
+import Certificate from "@/components/certificate";
+
 export default function Portfolio() {
   // State management
   const [darkMode, setDarkMode] = useState(false); // Toggle dark/light mode
@@ -91,32 +93,32 @@ export default function Portfolio() {
       } transition-all duration-500`}
     >
       {/* Header Section */}
-     <Header
-  darkMode={darkMode}
-  setDarkMode={setDarkMode}
-  sidebarOpen={sidebarOpen}
-  setSidebarOpen={setSidebarOpen}
-/>
+      <Header
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
       {/* Hero Section */}
-     
-<Hero />
+
+      <Hero />
       {/* About Section */}
-     <About darkMode={darkMode}/>
+      <About darkMode={darkMode} />
 
       {/* Skills Section */}
-    <Skills darkMode={darkMode}/>
+      <Skills darkMode={darkMode} />
       {/* Project Section */}
-      <Projects
-  darkMode={darkMode}
-  />
+      <Projects darkMode={darkMode} />
 
       {/* Testimonials Section */}
-      <Testimonials/>
-            {/* Contact Section */}
-            <Contact/>
+      <Certificate darkMode={darkMode} />
+      {/* Testimonials Section */}
+      <Testimonials />
+      {/* Contact Section */}
+      <Contact />
 
       {/* Footer Section */}
-      <Footer/>
+      <Footer />
     </main>
   );
 }
