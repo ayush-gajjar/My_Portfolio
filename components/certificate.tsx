@@ -7,6 +7,28 @@
 
   const certificates = [
     {
+      id: "Data Science",
+      desc: "IBM certification on What is Data Science? ",
+      issuer: "IBM",
+      badge: "certificate/icons/ibm.png",
+      issueDate: "July 20, 2025",
+      verifyLink:
+        "https://coursera.org/share/e49969a5ede582babbcf6b9dd42fb973",
+      file: "/certificate/DataScience.png",
+      images: ["/certificate/DataScience.png"],
+    },
+    {
+      id: "Generative AI: Introduction and Applications ",
+      desc: "IBM certification on Generative AI: Introduction and Applications ",
+      issuer: "IBM",
+      badge: "certificate/icons/ibm.png",
+      issueDate: "July 20, 2025",
+      verifyLink:
+        "https://coursera.org/share/f5cbb76cb79845991f0c6f10fdd4c743",
+      file: "/certificate/AI-1.png",
+      images: ["/certificate/AI-1.png"],
+    },
+    {
       id: "Python for Everybody",
       desc: "University of Michigan certification in Python programming.",
       issuer: "University of Michigan",
