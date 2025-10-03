@@ -39,7 +39,7 @@ const Skills = ({ darkMode }: { darkMode: boolean }) => {
     { 
       name: "JS", 
       icon: <SiJavascript className="text-yellow-600" />, 
-      years: "5 years",
+      years: "3 years",
       description: "Developed applications using modern ES6+ features and design patterns."
     },
     { 
@@ -75,13 +75,13 @@ const Skills = ({ darkMode }: { darkMode: boolean }) => {
     { 
       name: "Python", 
       icon: <SiPython className="text-blue-500" />, 
-      years: "4 years",
+      years: "2 years",
       description: "Built web scrapers, data pipelines, and automation scripts saving 20+ hours monthly."
     },
     { 
       name: "Java", 
       icon: <FaJava className="text-red-600" />,
-      years: "3 years",
+      years: "2 years",
       description: "Developed Android applications and backend services."
     },
     { 
@@ -93,13 +93,13 @@ const Skills = ({ darkMode }: { darkMode: boolean }) => {
     { 
       name: "Figma", 
       icon: <SiFigma className="text-pink-600" />, 
-      years: "4 years",
+      years: "1 years",
       description: "Designed 5+ UI/UX prototypes and design systems for web and mobile apps."
     },
     { 
       name: "Framer", 
       icon: <SiFramer className="text-purple-500" />, 
-      years: "2 years",
+      years: "1 years",
       description: "Created interactive prototypes and no-code websites with advanced animations."
     },
     { 
