@@ -74,6 +74,15 @@ const projects = [
       },
     ],
   },
+   {
+    id: "Blinkers",
+    tech: "React",
+    desc: "Blinkers, a digital showcase for an eye care professional",
+    link: "https://github.com/user/ecommerce",
+    images: ["/blinkers/blinkers1.jpg", "/blinkers/blinkers2.jpg", "/blinkers/blinkers2.jpg","/blinkers/blinkers4.jpg"],
+    brief:
+      "A digital showcase for an eye care professional and Eye Wearable built on the React !",
+  },
   {
     id: "Vintage Hub E-Commerce",
     tech: ".net",
