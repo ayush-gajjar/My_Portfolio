@@ -79,10 +79,34 @@ const projects = [
     tech: "React",
     desc: "Blinkers, a digital showcase for an eye care professional",
     link: "https://github.com/user/ecommerce",
-    images: ["/blinkers/blinkers1.jpg", "/blinkers/blinkers2.jpg", "/blinkers/blinkers2.jpg","/blinkers/blinkers4.jpg"],
+    isTeam: true,
+    images: ["/blinkers/blinkers1.png", "/blinkers/blinkers2.png", "/blinkers/blinkers2.png","/blinkers/blinkers4.jpg"],
     brief:
       "A digital showcase for an eye care professional and Eye Wearable built on the React !",
-  },
+    team: [
+      {
+        name: "Shubham Sharma",
+        avatar: "Team-Shubham/Shubhamprofile.jpg",
+        github: "https://github.com/ssharma292003",
+        linkedin: "https://www.linkedin.com/in/shubham-sharma-5793122b0/",
+        role: "lead & Backend dev",
+      },
+      {
+        name: "Ayush Gajjar",
+        avatar: "Ayush/Ayushprofile.jpg",
+        github: "https://github.com/ayush101x",
+        linkedin: "https://www.linkedin.com/in/ayushgajjar123",
+        role: "Co-Lead & Full Stack",
+      },
+      {
+        name: "Urvashiba Rana",
+        avatar: "Team-Urvashi/Urvashiprofile.jpg",
+        github: "https://github.com/urvashibarana",
+        linkedin: "https://www.linkedin.com/in/urvashibarana04",
+        role: "Backend dev",
+      },
+    ],
+    },
   {
     id: "Vintage Hub E-Commerce",
     tech: ".net",
